@@ -13,11 +13,12 @@ public static class Arrays
     {
         double[] result = new double[length];
 
-        // Until enough items have been added to the array to meet the required length
-        // set the value at the given index to index times the number being multiplied
+        // Until enough items have been added to the array to meet the 'length' requirement,
+        // set the value at the given index to ('i' + 1) times the 'number' being multiplied.
+        // One is added to 'i' to account for 0 index.
         for (int i = 0; i < length; i++)
         {
-            result[i] = number * (i + 1); // (i + 1) accounts for 0 index
+            result[i] = number * (i + 1);
         }
 
         return result;
@@ -32,11 +33,11 @@ public static class Arrays
     /// </summary>
     public static void RotateListRight(List<int> data, int amount)
     {
-        // Find the index where the "rotation" will occur
+        // Find the index where the rotation will occur by minusing 'amount' from the list count
         int index = data.Count - amount;
 
-        // Using the index variable, copy the elements that will be removed, remove them the end of the array,
-        // and insert them at the front of the array
+        // Using 'index', copy the elements that will be removed, remove them the end of the list,
+        // and insert them at the front of the list
         List<int> subset = data.GetRange(index, amount);
         data.RemoveRange(index, amount);
         data.InsertRange(0, subset);
