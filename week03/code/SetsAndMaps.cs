@@ -156,8 +156,7 @@ public static class SetsAndMaps
 
             earthquakes.Add($"{place} - Mag {mag}");
         }
-
-        Console.WriteLine(earthquakes);
+        
         return earthquakes.ToArray();
     }
 }
