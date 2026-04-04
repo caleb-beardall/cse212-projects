@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Runtime.Intrinsics.Arm;
+using System.Security.Cryptography.X509Certificates;
 using System.Transactions;
 
 public static class Recursion
@@ -135,7 +137,19 @@ public static class Recursion
     /// </summary>
     public static void WildcardBinary(string pattern, List<string> results)
     {
-        // TODO Start Problem 4
+        int index = pattern.IndexOf('*');
+
+        if (index == -1)
+        {
+            results.Add(pattern);
+            return;
+        }
+
+        string zeroVariant = pattern.Substring(0, index) + '0' + pattern.Substring(index + 1);
+        string oneVariant = pattern.Substring(0, index) + '1' + pattern.Substring(index + 1);
+
+        WildcardBinary(zeroVariant, results);
+        WildcardBinary(oneVariant, results);
     }
 
     /// <summary>
