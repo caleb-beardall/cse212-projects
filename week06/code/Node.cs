@@ -21,7 +21,7 @@ public class Node
             else
                 Left.Insert(value);
         }
-        else
+        else if (value > Data)
         {
             // Insert to the right
             if (Right is null)
@@ -34,7 +34,18 @@ public class Node
     public bool Contains(int value)
     {
         // TODO Start Problem 2
-        return false;
+        
+        if (value < Data)
+        {
+            if (Left is null) return false;
+            else return Left.Contains(value);
+        }
+        else if (value > Data)
+        {
+            if (Right is null) return false;
+            else return Right.Contains(value);
+        }
+        return true;
     }
 
     public int GetHeight()
